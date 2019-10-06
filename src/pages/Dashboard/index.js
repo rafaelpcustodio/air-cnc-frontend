@@ -16,8 +16,10 @@ export default function Dashboard(){
         query: { user_id },
     }),[user_id]); 
 
+    // pegando infos do socket
     useEffect(()=> {
         socket.on('booking_request', data =>{
+            console.log(data)
             setRequests([...requests, data]);
         })
     }, [requests, socket]);
@@ -27,9 +29,6 @@ export default function Dashboard(){
             const user_id = localStorage.getItem('user')
             const response = await api.get('/dashboard', {
                 headers: { user_id }
-            });
-            response.data.forEach(element => {
-                console.log(element.thumbnail_url)
             });
             setSpots(response.data)
         }

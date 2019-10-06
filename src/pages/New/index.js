@@ -14,7 +14,7 @@ export default function New({ history }){
     },[thumbnail])
 
     async function handleSubmit(event){
-        event.preventDetault();
+        event.preventDefault();
         const data = new FormData();
         const user_id = localStorage.getItem('user');
         data.append('thumbnail', thumbnail);
